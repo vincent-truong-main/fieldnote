@@ -2,6 +2,20 @@
 
 Consolidated from an event-storming-lite discovery session. This is a snapshot of decisions made so far, not a finished spec — open questions are marked at the bottom.
 
+## Business vision (the stakeholder brief)
+
+- **Product:** Fieldnote — a lightweight CRM for solo/small-team service businesses (photographers, consultants, freelance devs). Their own clients never touch the billing system being modeled here; billing is Fieldnote charging *its* customers.
+- **Buyer:** Not sophisticated software buyers — usually switching from a spreadsheet or notes app. One or two people, sometimes a small team.
+- **Stage:** Series A, growing, self-serve-led. Sales only gets involved for Team-plan accounts or churn-risk discount conversations — there's no sales gate between signup and revenue for most customers.
+- **Stated priority:** low friction everywhere in the funnel — signup, reactivation, upgrades. This has repeatedly won out over "squeeze more revenue at this one step" arguments during discovery (see the Locked-state and pre-filled-plan decisions below).
+- **Countervailing pressure:** finance wants better trial-to-paid conversion and dislikes unbounded ghost trial accounts sitting in limbo forever.
+- **Revenue model:** subscription only — no usage-based add-ons, no marketplace cut. This billing engine effectively *is* the company's cash flow.
+- **Plans (given, not yet fully modeled):** Starter, Pro, Team — monthly and annual. Team is per-seat; Starter/Pro are flat. No free tier currently exists in the plan lineup (relevant to the Locked-state design below).
+
+## How to resume this session
+
+If picking this back up cold: re-read "Business vision" and "Not yet modeled" below, then continue the event-storming-lite technique — narrate the next customer-timeline event in plain English (failed payment / dunning is the natural next thread), turn it into a Given/When/Then, and update this doc's Events and Not-yet-modeled sections as decisions get made.
+
 ## Problem space decomposition
 
 - **Core domain:** Billing / Subscription engine — the rules, the cash flow, where the risk and complexity live.
